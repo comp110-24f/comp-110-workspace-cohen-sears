@@ -29,7 +29,7 @@ It ensures everyone's VSCode is setup properly for success in the course.
                 "editor.formatOnSave": true,
                 "editor.formatOnSaveMode": "file",
                 "[python]": {
-                    "editor.defaultFormatter": "ms-python.black-formatter",
+                    // "editor.defaultFormatter": "ms-python.black-formatter",
                     "editor.formatOnSave": true
                 },
                 "python.defaultInterpreterPath": "/usr/bin/python3",
