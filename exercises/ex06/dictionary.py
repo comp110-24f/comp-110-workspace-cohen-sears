@@ -15,11 +15,11 @@ def invert(dict: dict[str, str]) -> dict[str, str]:
     return inverted_dict
 
 
-def favorite_color(dict: dict[str, str]) -> str:
-    color_count = {}
+def favorite_color(colors: dict[str, str]) -> str:
+    color_count: dict[str, int] = {}
     # Dict needed to count the number of times color appears
-    for name in dict:
-        color = dict[name]
+    for name in colors:
+        color = colors[name]
         if color in color_count:
             color_count[color] += 1
         else:
@@ -28,8 +28,8 @@ def favorite_color(dict: dict[str, str]) -> str:
     most_popular = ""
     # Needs to be defined as an empty string, so it can be returned even if empty
     max_count = 0
-    for name in dict:
-        color = dict[name]
+    for name in colors:
+        color = colors[name]
         if color_count[color] > max_count:
             most_popular = color
             max_count = color_count[color]
@@ -45,34 +45,35 @@ def favorite_color(dict: dict[str, str]) -> str:
 
 
 def count(items: list[str]) -> dict[str, int]:
-    dict = {}
+    item_count: dict[str, int] = {}
     for elem in items:
-        if elem in dict:
-            dict[elem] += 1
+        if elem in item_count:
+            item_count[elem] += 1
         # Increase if already present in list
         else:
-            dict[elem] = 1
+            item_count[elem] = 1
         # Needed for new keys
-    return dict
+    return item_count
 
 
 def alphabetizer(words: list[str]) -> dict[str, list[str]]:
-    dict = {}
+    alphabet_dict: dict[str, list[str]] = {}
     for word in words:
         first_letter = word[0].lower()
         # Given in directions
         # Retrieves the first letter in lowercase (makes things easier)
-        if first_letter in dict:
-            dict[first_letter].append(word)
+        if first_letter in alphabet_dict:
+            alphabet_dict[first_letter].append(word)
         else:
-            dict[first_letter] = [word]
-    return dict
+            alphabet_dict[first_letter] = [word]
+    return alphabet_dict
 
 
 def update_attendance(attendance: dict[str, list[str]], day: str, student: str) -> None:
     # Slightly confused on the returning none, but example returns the function
     if day in attendance:
-        attendance[day].append(student)
+        if student not in attendance[day]:
+            attendance[day].append(student)
     else:
         attendance[day] = [student]
     # Wouldnt a print statement have to be used to aquire this?
